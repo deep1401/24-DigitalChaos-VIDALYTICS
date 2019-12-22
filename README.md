@@ -13,9 +13,8 @@ This is an online service created by team Digital Chaos for content creators tha
 	 - Deep Gandhi https://github.com/deep1401/
 	 - Jash Mehta https://github.com/jashmehta3300/
 	 - Aryan Chouhan https://github.com/chouhanaryan/
-- *Demo Link*: Upload your project demo on YouTube/Drive and paste its link here
-- *Repository Link*: Provide us the link to your code
-- *Labels*: Mention the labels you wish to apply here such as AWS, Machine Learning, etc
+- *Demo Link*: 
+- *Labels*: Machine Learning, Azure, Praw, Video Analytics, Node.js, Flask 
 
 ## Installation
 
