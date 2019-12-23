@@ -11,8 +11,8 @@ CORS(app, support_credentials=True)
 
 username = "digitalchaos123"
 password = "digitalchaos123"
-clientid = "8Lqn66LhUBDv-w"
-clientsecret = "hpMcf-vtl5TTvTc1jfm85GoJJ_Q"
+clientid = "***Client ID****"
+clientsecret = "***Your secret***"
 
 def mine_reddit():
     def writeheaders():
