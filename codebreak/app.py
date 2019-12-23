@@ -7,9 +7,9 @@ from flask_cors import CORS,cross_origin
 app = Flask(__name__)
 CORS(app,support_credentials=True)
 CONFIG = {
-    'SUBSCRIPTION_KEY': 'ffaf53b4d9434ed59d43937bbd857357',
+    'SUBSCRIPTION_KEY': '***Subscription key***',
     'LOCATION': 'trial',
-    'ACCOUNT_ID': '164b80dc-17e1-45d3-a186-1d84d6eb7b6d'
+    'ACCOUNT_ID': '***Account ID***'
 }
 
 vi = VideoIndexer(
