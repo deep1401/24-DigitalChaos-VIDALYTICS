@@ -3,13 +3,10 @@ const express=require("express");
 const app= express();
 const bodyParser=require('body-parser');
 const mongoose=require("mongoose");
-
 const User=require("./model/data");
-//const Sub=require("./models/Subs");
 const path=require("path");
-//const nodemailer=require("nodemailer");
 const config=require("./config/key");
-const cors=require("cors")
+
 
 // Database
 const db=async()=>{
@@ -22,7 +19,9 @@ const db=async()=>{
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.use(cors())
+app.use("/",express.static("Landing page"))
+app.use("/Dashboard",express.static("Dashboard"))
+
 
 
 app.use(function (req, res, next) {

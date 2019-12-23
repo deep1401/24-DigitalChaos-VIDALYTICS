@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  <title>Digital Chaos</title>
+  
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  
+  
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  
+</head>
+
+<body id="page-top">
+  
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+    
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-text mx-3">VIDALYTICS</div>
+      </a>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+      
+      <!-- Nav Item - Dashboard -->
+      
+      <li class="nav-item">
+        <a class="nav-link" href="submit-link.html">
+          <i class="fas fa-fw fa-lightbulb"></i>
+          <span>Video Analyzer</span></a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="search-trends.html">
+            <i class="fas fa-fw fa-fire"></i>
+            <span>Marketing</span></a>
+          </li> 
+          
+          <li class="nav-item">
+            <a class="nav-link" href="billing.html">
+              <i class="fas fa-fw fa-dollar-sign"></i>
+              <span>Billing</span></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">
+                <i class="fas fa-fw fa-sign-out-alt"></i>
+                <span>Logout</span></a>
+              </li>  
+              
+            </ul>
+            <!-- End of Sidebar -->
+            
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+              
+              <!-- Main Content -->
+              <div id="content">
+                
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                  <h2 class="m-auto text-primary font-weight-bold">Video Analytics</h2>
+                  
+                  <!-- Sidebar Toggle (Topbar) -->
+                  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                  </button>
+                </nav>
+                
+                <!-- Begin Page Content -->
+                <div class="container-fluid" id="container">
+                  
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="input-group mb-3 ml-4 mt-3">
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" onchange="onchangeHandler()" id="file">
+                            <label class="custom-file-label" for="file">Choose file</label>
+                          </div>
+                        </div>
+                        <!-- <input type="text" placeholder="Language" class="form-control" id="lang"> -->
+                        <select class="form-control col-lg-12 mt-4 ml-4" id="lang">
+                          <option>English</option>
+                          <option>Hindi</option>
+                          <option>German</option>
+                          <option>Spanish</option>
+                          <option>Arabic</option>
+                          <option>French</option>
+                          <option>Italian</option>
+                          <option>Japanese</option>
+                          <option>Portuguese</option>
+                          <option>Russian</option>
+                          <option>Korean</option>
+                        </select>
+                      </div>
+                      
+                      <div class="col-lg-1"></div>
+                      
+                      <video  width="500" height="300" id="vid" controls class="mt-3 col-lg-6">
+                        <source src="" type="video/mp4" id="source" >
+                        </video>
+                        
+                      </div>
+                    </form>
+                    <div class="row">
+                      <h1 class="mt-5 ml-4">Labels:</h1>
+                    </div>
+                    <div class="row">
+                      <hr class="col-lg-12" />
+                    </div>
+                    <div class="row ml-2" id="cool">
+                    </div>
+                    <div class="row">
+                      <h1 class="mt-5 ml-4">Keywords:</h1>
+                    </div>
+                    <div class="row">
+                      <hr class="col-lg-12" />
+                    </div>
+                    <div class="row ml-2" id="cool1">
+                    </div>
+
+                    <div class="row">
+                      <h1 class="mt-5 ml-4">SentimentAnalysis:</h1>
+                    </div>
+                    <div class="row">
+                      <hr class="col-lg-12" />
+                    </div>
+                    <div class="row ml-2" id="cool2">
+                    </div>
+
+
+                    <div id="output">
+                      <div class="row" id="rowss"></div>
+                    </div>
+                    <script>
+                      let labels;
+                      let keywords;
+                      let name=null;
+                      let sentiments=null;
+                      let people=null;
+                      let faces=null;
+                      let arr=[];
+                      
+                      const updateHtml=(data)=>{
+                        const name=data.name;
+                        if(data.keywords.length){
+                          console.log(data.keywords)
+                          const cool1=document.getElementById("cool1");
+                          cool1.innerHTML=""
+                          data.keywords.forEach(element => {
+                            const col=document.createElement("div");
+                            col.setAttribute("class","mx-3")
+                            col.innerHTML=`<h4><kbd>${element.name}</kbd></h4>`;
+                            arr.push(element.name)
+                            cool1.appendChild(col)
+                          });
+                        }
+                        
+                        const cool=document.getElementById("cool");
+                        cool.innerHTML=""
+                        data.labels.forEach(element => {
+                          const col=document.createElement("div");
+                          col.setAttribute("class","mx-3")
+                          col.innerHTML=`<h4><kbd>${element.name}</kbd></h4>`;
+                          arr.push(element.name)
+                          cool.appendChild(col)
+                        });
+
+                        if(data.sentiments.length!=0){
+                          const cool2=document.getElementById("cool2")
+                          cool2.innerHTML=""
+                          data.sentiments.forEach(element=>{                          
+                          const sent=element.sentimentKey
+                          const ratio=element.seenDurationRatio
+                          const firstAppearance=element.appearances[0]
+                          const strt=firstAppearance.startTime
+                          const end=firstAppearance.endTime
+                          const div=document.createElement("div")
+                          div.setAttribute("class","col-md-4")
+                          div.innerHTML=`
+                          <div class="card text-center" style="width: 18rem">
+                        <div class="card-body">
+                          <h4 class="card-title text-dark font-weight-bold"><span class="text-success font-weight-bold">${sent}</span>: ${ratio}</h4>
+                          <p class="card-text">
+                            <ul class="list-unstyled"> 
+                              <li><span class="text-dark font-weight-bold">FirstApperance</span>:${strt} to ${end}</li>
+                            </ul>
+                          </p>
+                        </div>
+                      </div>`
+                      cool2.appendChild(div)
+                          
+                        })
+                        
+                        }
+                        
+                        console.log(arr)
+                        string=arr.join(",")
+                        
+                        // fetchs(arr);
+                        var formData = new FormData();
+                        formData.append('file',string);
+                        fetch('http://127.0.0.1:5050/reddit', {
+                          method:'POST',
+                          body:formData // body is where we want our data
+                        })
+                        .then((res) => res.json())
+                        .then((data) => {console.log(data)
+                          
+                          fetch("http://localhost:8000/web",{
+                            method:"POST",
+                            body:JSON.stringify(data),
+                            headers:{
+                              'Content-Type': 'application/json'
+                            }
+                          }).
+                          then(res=>res.json()).
+                          then(data=>console.log(data)).
+                          catch(err=>console.log(err))
+                          const output=document.getElementById("output")
+                          const row=document.getElementById("rowss")
+                          data.forEach(element=>{
+                            const col=document.createElement("div");
+                            col.setAttribute("class","col-lg-3 px-0 py-0 mt-4");
+                            col.innerHTML=`
+                            <div class="card text-center" style="width: 18rem">
+                              <img src="img123.jfif" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title font-weight-bold">keyword:${element[0]}</h5>
+                                <p class="card-text">
+                                  <ul class="list-unstyled"> 
+                                    <li>Domain:${element[2]}</li>
+                                    <li>SubReddit:${element[4]}</li>
+                                    <li>CreatedAt:${element[5]}</li>
+                                  </ul>
+                                </p>
+                                <a href="${element[1]}" target="_blank" class="btn btn-primary">Open Link</a>
+                              </div>
+                            </div>
+                            `
+                            row.appendChild(col)
+                          })
+                          
+                        })
+                      }
+                      
+                      function onchangeHandler() {
+                        
+                        const fileField = document.querySelector('input[type="file"]');
+                        
+                        const src= document.getElementById("source")
+                        src.setAttribute("src",fileField.files[0].name)
+                        console.log(src)
+                        document.getElementById("vid").appendChild(src)
+                        
+                        
+                        
+                        upload(fileField.files[0])
+                        console.log(fileField.files[0])
+                      }
+                      
+                      
+                      var upload = async function (photo) {
+                        var formData = new FormData();
+                        let lang
+                        const inputLang=document.getElementById("lang")
+                        if(inputLang.value!=null){
+                          lang=inputLang.value
+                        }
+                        else{
+                          lang="English"
+                        }
+                        formData.append("lang",lang)
+                        formData.append('file', photo);
+                        
+                        try {
+                          const response = await fetch("http://127.0.0.1:5000/uploader", {
+                            method: 'POST',
+                            body: formData
+                          });
+                          const result = await response.json();
+                          console.log(result)
+                          updateHtml(result.summarizedInsights)
+                        }
+                        catch (e) {
+                          console.log(e)
+                        }
+                      }
+                      
+                    </script>
+                    
+                  </div>
+                  <!-- /.container-fluid -->
+                  
+                </div>
+                <!-- End of Main Content -->
+                
+              </div>
+              <!-- End of Content Wrapper -->
+              
+            </div>
+            <!-- End of Page Wrapper -->
+            
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+              <i class="fas fa-angle-up"></i>
+            </a>
+            
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin-2.min.js"></script>
+            
+          </body>
+          
+          </html>
+          
