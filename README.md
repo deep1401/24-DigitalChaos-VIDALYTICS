@@ -31,7 +31,7 @@ cd ..
 
 ## Starting app
 node server.js
-then open: localhost:8000
+open: localhost:8000
 ```
 
 ## Description
