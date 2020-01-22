@@ -2,6 +2,17 @@
 
 This is an online service created by team Digital Chaos for content creators that performs video content anaylsis for designing effective marketing and business development policies.
 
+
+## Screenshots
+
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/home1.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/home2.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/home3.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/home4.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/Video%20Analytics.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/Video%20Analytics%202.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/Reddit%20Links.JPG)
+
 ## About
 
 - *Project Name*: Vidalytics
