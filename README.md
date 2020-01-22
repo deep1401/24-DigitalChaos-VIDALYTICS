@@ -1,6 +1,17 @@
-# 24-Digital_Chaos-VIDALYTICS
+# Video Analysis for Marketing and Business Development
 
 This is an online service created by team Digital Chaos for content creators that performs video content anaylsis for designing effective marketing and business development policies.
+
+
+## Screenshots
+
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/home1.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/home2.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/home3.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/home4.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/Video%20Analytics.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/Video%20Analytics%202.JPG)
+![](https://github.com/jashmehta3300/Screenshots/blob/master/Vidalytics_img/Reddit%20Links.JPG)
 
 ## About
 
@@ -13,7 +24,7 @@ This is an online service created by team Digital Chaos for content creators tha
 	 - Deep Gandhi https://github.com/deep1401/
 	 - Jash Mehta https://github.com/jashmehta3300/
 	 - Aryan Chouhan https://github.com/chouhanaryan/
-- *Demo Link*: 
+- *Demo Link*: https://www.youtube.com/watch?v=Fqq0us2Nn0A&feature=youtu.be
 - *Labels*: Machine Learning, Azure, Praw, Video Analytics, Node.js, Flask 
 
 ## Installation
@@ -31,7 +42,7 @@ cd ..
 
 ## Starting app
 node server.js
-then open: localhost:8000
+open: localhost:8000
 ```
 
 ## Description
