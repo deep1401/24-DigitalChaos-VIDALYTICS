@@ -5,6 +5,7 @@ import csv
 import datetime
 import json
 import pandas as pd
+import os
 
 app = Flask(__name__)
 CORS(app, support_credentials=True)
@@ -32,7 +33,10 @@ def mine_reddit():
                          username=username)
 
     print("Authentication for " + str(reddit.user.me()) + " is verified. Proceeding.\r\n")
-
+    
+    if 'reddit.csv' in os.listdir():
+        os.remove('reddit.csv')
+    
     outfilename = 'reddit.csv'
     # search =
     sortsub = 'relevance'
