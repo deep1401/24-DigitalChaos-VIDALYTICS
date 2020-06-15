@@ -51,13 +51,16 @@ def indexvideo(video_id,language):
 def upload():
     language=request.form.get('lang')
     name=upload_file()
-    video_id=createinstance(name,language)
-
-    while(True):
-        info = indexvideo(video_id,language)
-        if info['state']=='Processed':
-            info1=json.dumps(info)
-            return info1
+    try:    
+        video_id=createinstance(name,language)
+        while(True):
+            info = indexvideo(video_id,language)
+            if info['state']=='Processed':
+                info1=json.dumps(info)
+                return info1
+    
+    except Exception as error:
+        return jsonify([f'Error Occurred: {error}'])
 
 
 
