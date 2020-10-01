@@ -1,6 +1,6 @@
 # 24-Digital_Chaos-VIDALYTICS
 
-This is an online service created by team Digital Chaos for content creators that performs video content anaylsis for designing effective marketing and business development policies.
+This is an online service created by team Digital Chaos for content creators that performs video content anaylsis for designing effective marketing and business development policies. It also provides an efficient way to market your product by suggesting the links of sub reddits having relevant customers. 
 
 ## About
 
@@ -47,4 +47,4 @@ Content creators over the country suffer from a common problem that cannot be so
 - Bootstrap
 
 ## Note
-We used the Reddit Praw data mining tool for dynamic mining of data every time a keyword is generated. This helps keep up with the current sentiment of the society.
+We used the Reddit Praw data mining tool for dynamic mining of data every time a keyword is generated. This helps keep up with the current sentiment of the society. 
