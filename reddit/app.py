@@ -9,8 +9,8 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
-username = "digitalchaos123"
-password = "digitalchaos123"
+username = "**REDDIT USERNAME**"
+password = "**ENTER PASSWORD**"
 clientid = "***Client ID****"
 clientsecret = "***Your secret***"
 
